@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public interface InteMainMenu {
     public void mainMenuOptions();
-    public ArrayList returnAllFiles();
+    public void returnAllFiles();
     public void otherOptions();
     public void closeApp();
 
