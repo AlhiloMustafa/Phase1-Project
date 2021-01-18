@@ -19,17 +19,16 @@ public class MainMenu implements InteMainMenu {
     // Run Main Menu
     @Override
     public void mainMenuOptions() {
-        // Get the user input to chose one of the option below
+        // Get the user input to chose one of the option below:
         try {
             String mainMinString = "\n ** Main Menu ** " + "\n" + "1-Return All Files." + "\n" + "2-Other Options." + "\n"
-                    + "3-Close the Application(Exit).\n please chose one of the above:";
+                    + "3-Close the Application(Exit).\n Please chose one of the above:";
             System.out.println(mainMinString);
             this.userChose = scanner.nextInt();
 
         } catch (InputMismatchException e) {
             System.out.println("Sorry, Your input must be 1,2, or 3.");
         }
-
 
         switch (userChose) {
             case 1:
@@ -43,23 +42,17 @@ public class MainMenu implements InteMainMenu {
                 break;
             default:
                 scanner.nextLine();
-
         }
         scanner.nextLine();
         mainMenuOptions();
-
     }
-
-
+    // Return all files method:
     @Override
     public void returnAllFiles() {
-        // I need to check for number (it does not sort the numbers correctly cz they are strings now )
-
         try {
 
             TreeSet<String> setOfFiles = new TreeSet();
             File[] files = new File(path).listFiles();
-
 
             for (File file : files) {
                 if (file.isFile()) {
@@ -76,7 +69,7 @@ public class MainMenu implements InteMainMenu {
             mainMenuOptions();
         }
     }
-
+    // Other options menu:
     @Override
     public void otherOptions() {
 
@@ -88,8 +81,10 @@ public class MainMenu implements InteMainMenu {
 
         } catch (InputMismatchException e) {
             System.out.println("Sorry, Your input must be 1,2,3, or 4.");
+            scanner.nextLine();
+            otherOptions();
         }
-
+        // Get the user input and switch to on of the methods(add , delete, search, or back to the main menu)
         switch (userChose) {
             // Call add file method
             case 1:
@@ -107,22 +102,17 @@ public class MainMenu implements InteMainMenu {
             case 4:
                 mainMenuOptions();
             default:
-            // Call the other option method
+                // Call the other option method
                 scanner.nextLine();
                 otherOptions();
         }
-
         mainMenuOptions();
-
-
     }
 
     @Override
     public void closeApp() {
         System.out.println("Goodbye, Thanks for using LockedMe.com  ");
         System.exit(0);
-
     }
-
 
 }
