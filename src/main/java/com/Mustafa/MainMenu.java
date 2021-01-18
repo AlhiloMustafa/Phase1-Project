@@ -1,20 +1,28 @@
 package com.Mustafa;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class MainMenu implements InteMainMenu {
     static Scanner scanner = new Scanner(System.in);
     int userChose;
-    static String path = "C:/Users/musal/directory"; // The path of the main directory
+    static String path = "C:/Root"; // The path of the main directory
 
+    // Welcome page
+    public void welcomePage() {
+        String welcomePage = "** Welcome to LockedMe.com ** \n Developer: Mustafa Alhilo " +
+                "\n Contacts : Mustafa.alhilo@hcl.com ";
+        System.out.println(welcomePage);
+    }
+
+    // Run Main Menu
     @Override
     public void mainMenuOptions() {
-
+        // Get the user input to chose one of the option below
         try {
-            String mainMinString = "\n ** Main Menu ** " + "\n" + "1-Return All Files." + "\n" + "2-Other Options." + "\n" + "3-Close the Application(Exit).";
+            String mainMinString = "\n ** Main Menu ** " + "\n" + "1-Return All Files." + "\n" + "2-Other Options." + "\n"
+                    + "3-Close the Application(Exit).\n please chose one of the above:";
             System.out.println(mainMinString);
             this.userChose = scanner.nextInt();
 
@@ -37,6 +45,7 @@ public class MainMenu implements InteMainMenu {
                 scanner.nextLine();
 
         }
+        scanner.nextLine();
         mainMenuOptions();
 
     }
@@ -49,7 +58,7 @@ public class MainMenu implements InteMainMenu {
         try {
 
             TreeSet<String> setOfFiles = new TreeSet();
-            File[] files = new File(this.path).listFiles();
+            File[] files = new File(path).listFiles();
 
 
             for (File file : files) {
@@ -66,15 +75,14 @@ public class MainMenu implements InteMainMenu {
             System.out.println("Please make sure the path of your directory is correct. ");
             mainMenuOptions();
         }
-
-
     }
 
     @Override
     public void otherOptions() {
 
         try {
-            String OtherOpString = " ** OTHER OPTIONS ** " + "\n" + "1-Add a file. " + "\n" + "2-Delete a file." + "\n" + "3-Search for a file" + "\n" + "4-Back to the Main Menu";
+            String OtherOpString = " ** OTHER OPTIONS ** " + "\n" + "1-Add a file. " + "\n" + "2-Delete a file."
+                    + "\n" + "3-Search for a file" + "\n" + "4-Back to the Main Menu";
             System.out.println(OtherOpString);
             this.userChose = scanner.nextInt();
 
@@ -83,36 +91,38 @@ public class MainMenu implements InteMainMenu {
         }
 
         switch (userChose) {
+            // Call add file method
             case 1:
                 OtherOptions.addfile();
                 break;
+            // Call delete file method
             case 2:
                 OtherOptions.deleteFile();
                 break;
+            // Call search for a file method
             case 3:
                 OtherOptions.searchFile();
                 break;
+            // Return to the main method
             case 4:
                 mainMenuOptions();
             default:
-
+            // Call the other option method
                 scanner.nextLine();
                 otherOptions();
         }
+
+        mainMenuOptions();
 
 
     }
 
     @Override
     public void closeApp() {
-        System.out.println("Goodbye, Thanks for using phase1 application.  ");
+        System.out.println("Goodbye, Thanks for using LockedMe.com  ");
         System.exit(0);
 
     }
-
-//    InterCreateDirectory mainDirectory= ()->{
-//
-//    };
 
 
 }
